@@ -1,16 +1,17 @@
 const defaultNumber = 0;
-const defaultOperand = "";
+const defaultTotal = "";
 let numberShown;
 let totalEquation;
 let operandClicked;
 let fullMath = [];
+let resultGet;
 
 const operand = /[+-/*]/;
 const numberAllowed = /[1234567890]/;
 
 $(document).ready(function () {
   numberShown = defaultNumber;
-  totalEquation = defaultOperand;
+  totalEquation = defaultTotal;
   operandClicked = false;
 });
 
@@ -25,7 +26,6 @@ $("button").click(function () {
 
   // User click the operand
   if (userClick.match(operand)) {
-    console.log("UserClick is operand");
     // prevent adding more operand when it's already clicked
     if (operandClicked == false) {
       totalEquation += numberShown + userClick;
@@ -35,29 +35,46 @@ $("button").click(function () {
       totalEquation += userClick;
     }
 
+    // User choose square
+  } else if (userClick == "square") {
+    numberShown += "*" + numberShown;
+    operandClicked = true;
+
+    // User choose delete
+  } else if (userClick == "delete") {
+    if (numberShown.length <= 1) {
+      numberShown = defaultNumber;
+    } else {
+      numberShown = numberShown.slice(0, numberShown.length - 1);
+    }
+
     // User choose to clear
   } else if (userClick == "CE" || userClick == "C") {
     if (userClick == "CE") {
       numberShown = defaultNumber;
     } else if (userClick == "C") {
-      totalEquation = defaultOperand;
+      totalEquation = defaultTotal;
       numberShown = defaultNumber;
       fullMath = [];
     }
 
     // User wanted Result
   } else if (userClick == "=") {
-    fullMath.push(totalEquation + numberShown);
-    numberShown = calculate(fullMath);
-    totalEquation = defaultOperand;
-    fullMath = [];
+    if (operandClicked == false) {
+      fullMath.push(totalEquation + numberShown);
+      numberShown = calculate(fullMath);
+      totalEquation = defaultTotal;
+      fullMath = [];
+      resultGet = true;
+    }
 
     // User inputting Number
   } else {
-    numberShown == 0 || operandClicked == true
+    numberShown == 0 || operandClicked == true || resultGet == true
       ? (numberShown = userClick)
       : (numberShown = numberShown + userClick);
     operandClicked = false;
+    resultGet = false;
   }
 
   $("#calcTotalEquation").text(totalEquation);
