@@ -1,6 +1,6 @@
 # CALCULATOR JS
 
-![The preview of the app](/screenshot/Calculator%20V.1.png)
+![The preview of the app](/screenshot/Calculator%200.1.png)
 
 This is a simple non complicated Calculator Web application.  
 Made using pure _HTML_, _CSS_, with _Javascript_ combined with _Jquery_ Library.
