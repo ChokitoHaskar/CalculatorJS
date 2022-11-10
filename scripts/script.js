@@ -9,13 +9,12 @@ const operand = /[+-/*]/;
 const numberAllowed = /[1234567890]/;
 
 $(document).ready(function () {
-  console.log("APP Started");
   numberShown = defaultNumber;
   totalEquation = defaultOperand;
   operandClicked = false;
 });
 
-// Inputting number via Keyboard
+// Inputting number via Keyboard - 0.2 Update
 $(".calcNumberArea").click(function () {
   alert("Switch to Keyboard Input");
 });
@@ -26,6 +25,8 @@ $("button").click(function () {
 
   // User click the operand
   if (userClick.match(operand)) {
+    console.log("UserClick is operand");
+    // prevent adding more operand when it's already clicked
     if (operandClicked == false) {
       totalEquation += numberShown + userClick;
       operandClicked = true;
@@ -65,8 +66,8 @@ $("button").click(function () {
 
 // Function to convert array to string to result
 function calculate(arrayForm) {
-  console.log("This is array form: ", arrayForm);
+  // Turn array into string
   let stringForm = arrayForm.toString();
-  console.log("This is string form: ", stringForm);
+  // Calculate the string?
   return Function("return " + stringForm)();
 }
