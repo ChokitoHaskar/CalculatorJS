@@ -12,6 +12,10 @@ Made using pure _HTML_, _CSS_, with _Javascript_ combined with _Jquery_ Library.
 
 ## Version Log
 
+### 0.2.1
+
+- Fixed the square capabilites
+
 ### 0.2
 
 - Changing the '(' and ')' buttons to 'x<sup>2</sup>' and 'del' buttons respectively for functionality
