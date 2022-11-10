@@ -38,7 +38,6 @@ $("button").click(function () {
     // User choose square
   } else if (userClick == "square") {
     numberShown += "*" + numberShown;
-    operandClicked = true;
 
     // User choose delete
   } else if (userClick == "delete") {
